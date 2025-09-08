@@ -14,5 +14,10 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "functions": {
+    "build": {
+      "includeFiles": "node_modules/.bin/**"
+    }
+  }
 }
