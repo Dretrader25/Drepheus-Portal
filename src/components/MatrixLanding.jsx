@@ -1,14 +1,36 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const MatrixLanding = ({ onEnter }) => {
   const canvasRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    // Add a small delay to ensure component is mounted
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
 
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isLoading) return; // Don't start animation while loading
+    
+    console.log('MatrixLanding useEffect starting...');
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      console.log('Canvas not found!');
+      return;
+    }
+
+    console.log('Canvas found, initializing...');
     const squareSize = 16; // Smaller size for more density
     const ctxt = canvas.getContext('2d');
+    if (!ctxt) {
+      console.log('Cannot get 2d context!');
+      return;
+    }
+    
     ctxt.font = `${squareSize}px monospace`;
 
     // Set canvas size to window size
@@ -138,10 +160,18 @@ const MatrixLanding = ({ onEnter }) => {
         cancelAnimationFrame(animationId);
       }
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black z-20">
+          <div className="text-green-400 font-mono text-xl animate-pulse">
+            Initializing matrix...
+          </div>
+        </div>
+      )}
+      
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full"
