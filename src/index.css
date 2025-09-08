@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    background: #000000;
+  }
+}
+
+@layer components {
+  .matrix-char {
+    @apply text-matrix-green font-mono font-bold;
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+    filter: brightness(1.2);
+  }
+  
+  .matrix-char-bright {
+    @apply text-white;
+    text-shadow: 
+      0 0 8px currentColor,
+      0 0 16px currentColor,
+      0 0 24px currentColor,
+      0 0 32px currentColor;
+    filter: brightness(2);
+  }
+  
+  .matrix-char-dim {
+    @apply text-matrix-darkGreen;
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 4px currentColor;
+    filter: brightness(0.6);
+  }
+  
+  .matrix-theme-blue .matrix-char {
+    @apply text-matrix-blue;
+  }
+  
+  .matrix-theme-gold .matrix-char {
+    @apply text-matrix-gold;
+  }
+  
+  .matrix-theme-white .matrix-char {
+    @apply text-matrix-white;
+  }
+}
