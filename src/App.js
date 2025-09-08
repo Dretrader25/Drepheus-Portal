@@ -79,7 +79,7 @@ function App() {
             PORTAL
           </h2>
           <p className="text-sm sm:text-lg md:text-xl font-mono text-green-300 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
-            Welcome to the digital nexus. Enter the portal to access advanced trading systems and market intelligence.
+            You take the blue pill, the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill, you stay in Wonderland, and I show you how deep the rabbit-hole goes.
           </p>
           
           {/* Portal Entry Button */}
